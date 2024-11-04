@@ -153,6 +153,26 @@ These insights aid in understanding revenue, subscription type popularity, and c
 
 3. **Power BI Visualizations**: For interactive analysis, access the Power BI dashboard here: [Interactive Dashboard](https://app.powerbi.com/groups/me/reports/1defa032-0b23-405a-9b42-7e89fdb081b6?ctid=b6de804f-51cd-47ef-a151-26514ed475f0&pbi_source=linkShare&bookmarkGuid=c26374cf-d21e-4a4f-8c66-1f0883790118).
 
+The **Customer Insights and Subscription Trends Dashboard** presents customer segmentation by subscription type and region:
+- **KPI Cards** display key metrics such as Average Subscription Duration (365.35 days) and Average Revenue per Subscription (1999.0).
+- **Subscription Type Breakdown** uses a Pie Chart for regional distributions, with each region representing about 25% of total subscriptions.
+- **Revenue by Region and Subscription Type** is visualized through a Bar Chart, highlighting revenue-generating regions by subscription type.
+- **Customer Segmentation by Region and Subscription Type** shows an even distribution of subscriptions across regions.
+
+The **Cancellation and Subscription Analysis Dashboard** emphasizes cancellation trends and the active/canceled split by subscription type:
+- **Canceled Count and Revenue by Quarter** reveals quarterly trends, showing a Q1-Q4 decline in cancellations and revenue.
+- **Customer Count by Subscription Type and Canceled Status** displays the higher cancellation count for Basic subscriptions, visualized in Horizontal Bar Charts.
+- **Total Subscriptions** with progress bars indicate total, canceled, and active subscriptions.
+
+
+**Visualizations**: 
+
+![Customer Insight Dashboard](https://github.com/user-attachments/assets/16dafb67-4b21-4be7-86a8-3b8d8832ba11)
+
+![Customer Insight 2](https://github.com/user-attachments/assets/5359006b-8bb3-4ee1-9adf-5426b07818d0)
+
+![Cancellation Rate](https://github.com/user-attachments/assets/68cd24fd-a643-45c8-8349-e13ff66220b6)
+
 ---
 
 ### Key Findings
