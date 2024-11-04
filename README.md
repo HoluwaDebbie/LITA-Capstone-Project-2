@@ -1,28 +1,17 @@
 # LITA-Capstone-Project-2
 
----
+## Project Title: Customer Segmentation for a Subscription Service
 
-## Project Title: Customer Segmentation for a Subscription Service.
-
-### Table of Content
-
-[Project Overview](#project-overview).
-
-[Objectives](#objectives).
-
-[Tools used](#tools-used).
-
-[Data Cleaning and Preparation](#data-cleaning-and-preparation).
-
-[Exploratory Data Analysis](#exploratory-data-analysis).
-
-[Data Analysis and Visualization](#data-analysis-and-visualization).
-
-[Key Findings](#key-findings).
-
-[Recommendations](#recommendations).
-
-[Conclusion](#conclusion).
+### Table of Contents
+- [Project Overview](#project-overview)
+- [Objectives](#objectives)
+- [Tools Used](#tools-used)
+- [Data Cleaning and Preparation](#data-cleaning-and-preparation)
+- [Exploratory Data Analysis](#exploratory-data-analysis)
+- [Data Analysis and Visualization](#data-analysis-and-visualization)
+- [Key Findings](#key-findings)
+- [Recommendations](#recommendations)
+- [Conclusion](#conclusion)
 
 ---
 
@@ -54,51 +43,52 @@ The primary objectives of this project are:
 
 **Data preparation steps ensured accuracy and consistency across tools**:
 
-- *Data Import and Format Checks*: Imported data into Excel, verifying field types for date, text, and numerical consistency.
-- *Handling Missing Values*: Identified and removed rows with missing values to ensure data integrity.
-- *Standardization*: Standardized text in columns like `Region`, `SubscriptionType`, and `CustomerName` to prevent duplicate records due to format inconsistencies.
-- *Derived Columns*:
-  - *Subscription Duration*: Calculated as the difference between `SubscriptionStart` and `SubscriptionEnd` in Excel.
-  - *Active/Cancelled Status*: Derived by evaluating if `SubscriptionEnd` has a date, indicating a canceled subscription.
-  - *Revenue per Subscription*: Aggregated revenue per customer across active and canceled subscriptions.
+- **Data Import and Format Checks**: Imported data into Excel, verifying field types for date, text, and numerical consistency.
+- **Handling Missing Values**: Identified and removed rows with missing values to ensure data integrity.
+- **Standardization**: Standardized text in columns like `Region`, `SubscriptionType`, and `CustomerName` to prevent duplicate records due to format inconsistencies.
+- **Derived Columns**:
+  - **Subscription Duration**: Calculated as the difference between `SubscriptionStart` and `SubscriptionEnd` in Excel.
+  - **Active/Cancelled Status**: Derived by evaluating if `SubscriptionEnd` has a date, indicating a canceled subscription.
+  - **Revenue per Subscription**: Aggregated revenue per customer across active and canceled subscriptions.
 
- **Key SQL Queries used for cleaning and preparations**: 
- 
-- *Duplicate Management*:
-```SQL
-SELECT *, COUNT(*) AS duplicate_count
-FROM CustomerData
-GROUP BY CustomerID, CustomerName, Region, SubscriptionType, SubscriptionStart, SubscriptionEnd, Canceled, Revenue, "Subscription Duration"
-HAVING duplicate_count > 1;
+**Key SQL Queries Used for Cleaning and Preparation**: 
 
-DELETE FROM CustomerData
-WHERE rowid NOT IN (
-    SELECT MIN(rowed)
-    FROM CustomerData
-    GROUP BY CustomerID, CustomerName, Region, SubscriptionType, SubscriptionStart, SubscriptionEnd, Canceled, Revenue, "Subscription Duration"
-);
-```
+- **Duplicate Management**:
+  ```SQL
+  SELECT *, COUNT(*) AS duplicate_count
+  FROM CustomerData
+  GROUP BY CustomerID, CustomerName, Region, SubscriptionType, SubscriptionStart, SubscriptionEnd, Canceled, Revenue, "Subscription Duration"
+  HAVING duplicate_count > 1;
 
-- *Null Value Detection and Removal*:
-```SQL
-SELECT COUNT(*) AS null_count
-FROM CustomerData
-WHERE CustomerID IS NULL OR CustomerName IS NULL OR Region IS NULL
-      OR SubscriptionType IS NULL OR SubscriptionStart IS NULL
-      OR SubscriptionEnd IS NULL OR Canceled IS NULL OR Revenue IS NULL
-      OR "Subscription Duration" IS NULL;
+  DELETE FROM CustomerData
+  WHERE rowid NOT IN (
+      SELECT MIN(rowid)
+      FROM CustomerData
+      GROUP BY CustomerID, CustomerName, Region, SubscriptionType, SubscriptionStart, SubscriptionEnd, Canceled, Revenue, "Subscription Duration"
+  );
+  ```
 
-DELETE FROM CustomerData
-WHERE CustomerID IS NULL OR CustomerName IS NULL OR Region IS NULL
-      OR SubscriptionType IS NULL OR SubscriptionStart IS NULL
-      OR SubscriptionEnd IS NULL OR Canceled IS NULL OR Revenue IS NULL
-      OR "Subscription Duration" IS NULL;
-```
+- **Null Value Detection and Removal**:
+  ```SQL
+  SELECT COUNT(*) AS null_count
+  FROM CustomerData
+  WHERE CustomerID IS NULL OR CustomerName IS NULL OR Region IS NULL
+        OR SubscriptionType IS NULL OR SubscriptionStart IS NULL
+        OR SubscriptionEnd IS NULL OR Canceled IS NULL OR Revenue IS NULL
+        OR "Subscription Duration" IS NULL;
+
+  DELETE FROM CustomerData
+  WHERE CustomerID IS NULL OR CustomerName IS NULL OR Region IS NULL
+        OR SubscriptionType IS NULL OR SubscriptionStart IS NULL
+        OR SubscriptionEnd IS NULL OR Canceled IS NULL OR Revenue IS NULL
+        OR "Subscription Duration" IS NULL;
+  ```
 
 ---
 
 ### Exploratory Data Analysis
 Key questions explored in this analysis:
+
 1. Which subscription types drive the most revenue?
 2. How does revenue distribution vary across regions?
 3. What are the characteristics of active vs. canceled subscriptions?
@@ -110,123 +100,95 @@ These insights aid in understanding revenue, subscription type popularity, and c
 
 ### Data Analysis and Visualization
 
-1. **Excel Analysis**: I used excel online, so you can get the file here [Download Here](https://1drv.ms/x/c/41bec79bae4bb512/EaOvzB2De4dKh3UD2P5_T08BaV3IeyUJoaf8c_w6c3HF8w?e=Ne8teT).
+1. **Excel Analysis**: I used Excel online, so you can download the file here: [Download Here](https://1drv.ms/x/c/41bec79bae4bb512/EaOvzB2De4dKh3UD2P5_T08BaV3IeyUJoaf8c_w6c3HF8w?e=Ne8teT).
 
-- **Key Formulas Used**:
-  
-- *Average Subscription Duration*: `=AVERAGE(SubscriptionDurationRange)`
-  
-- *Active Subscriptions*: `=COUNTIF(CancelledRange, "FALSE")`
-  
-- *Cancelled Subscriptions*: `=COUNTIF(CancelledRange, TRUE")`
-  
-- *Cancellation Rate*: `=COUNTIF(CancelledRange, "TRUE") / COUNTA(CustomerNameRange)`
-  
-- *Average Revenue per Subscription*: `=AVERAGE(RevenueRange)`
+   - **Key Formulas Used**:
+     - Average Subscription Duration: `=AVERAGE(SubscriptionDurationRange)`
+     - Active Subscriptions: `=COUNTIF(CancelledRange, "FALSE")`
+     - Cancelled Subscriptions: `=COUNTIF(CancelledRange, "TRUE")`
+     - Cancellation Rate: `=COUNTIF(CancelledRange, "TRUE") / COUNTA(CustomerNameRange)`
+     - Average Revenue per Subscription: `=AVERAGE(RevenueRange)`
 
-Pivot tables were used to summarize revenue by region, count subscriptions, and average subscription durations.
+   Pivot tables were used to summarize revenue by region, count subscriptions, and average subscription durations.
 
-**Visualization**: [Pivot Table for Customer Data](https://github.com/user-attachments/assets/e5268713-7ac9-493f-9f84-4f51bbca6500)
+   **Visualization**: ![Pivot Table for Customer Data](https://github.com/user-attachments/assets/e5268713-7ac9-493f-9f84-4f51bbca6500)
 
+2. **SQL Analysis**
 
-2.  SQL Analysis
+   - **Total Number of Customers from Each Region**:
+     ```SQL
+     SELECT Region, COUNT(CustomerID) AS Total_Customers
+     FROM CustomerData
+     GROUP BY Region
+     UNION ALL
+     SELECT 'Total', COUNT(CustomerID)
+     FROM CustomerData;
+     ```
 
-- **Total Number of Customers from each Region**:
-```SQL
-SELECT Region, COUNT(CustomerID) AS Total_Customers
-FROM CustomerData
-GROUP BY Region
-UNION ALL
-SELECT 'Total', COUNT(CustomerID)
-FROM CustomerData;
-```
+     **Visualization**: ![SQL Total Number of Customers from Each Region](https://github.com/user-attachments/assets/594d08e5-1101-47d6-9125-61e475a6e97f)
 
-**Visualization**: [SQL  total number of customers from each region](https://github.com/user-attachments/assets/594d08e5-1101-47d6-9125-61e475a6e97f)
+   - **Total Revenue by Subscription Type**:
+     ```SQL
+     SELECT SubscriptionType, SUM(CAST(REPLACE(Revenue, ',', '') AS INTEGER)) AS Total_Revenue
+     FROM CustomerData
+     GROUP BY SubscriptionType
+     UNION ALL
+     SELECT 'Total', SUM(CAST(REPLACE(Revenue, ',', '') AS INTEGER))
+     FROM CustomerData;
+     ```
 
+     **Visualization**: ![SQL Total Revenue by Subscription Type](https://github.com/user-attachments/assets/e707e7ef-b4ce-4bab-b4f3-39e0a042951a)
 
-- **Total Revenue by Subscription Type**:
-```SQL
-SELECT SubscriptionType, SUM(CAST(REPLACE(Revenue, ',', '') AS INTEGER)) AS Total_Revenue
-FROM CustomerData
-GROUP BY SubscriptionType
-UNION ALL
-SELECT 'Total', SUM(CAST(REPLACE(Revenue, ',', '') AS INTEGER))
-FROM CustomerData;
-```
+   - **Top 3 Regions by Subscription Cancellation**:
+     ```SQL
+     SELECT Region, COUNT(CustomerID) AS Cancellations
+     FROM CustomerData
+     WHERE Canceled = 'TRUE'
+     GROUP BY Region
+     ORDER BY Cancellations DESC
+     LIMIT 3;
+     ```
 
-**Visualization**: [SQL total revenue by subscription type](https://github.com/user-attachments/assets/e707e7ef-b4ce-4bab-b4f3-39e0a042951a)
+     **Visualization**: ![SQL Top 3 Regions by Subscription Cancellations](https://github.com/user-attachments/assets/f70bde7d-2d91-4f46-963b-2098505b0027)
 
-
-- **Top 3 Regions by Subscription Cancellation**:
-```SQL
-SELECT Region, COUNT(CustomerID) AS Cancellations
-FROM CustomerData
-WHERE Canceled = 'TRUE'
-GROUP BY Region
-ORDER BY Cancellations DESC
-LIMIT 3;
-```
-
-**Visualization**: [SQL top 3 regions by subscription cancellations](https://github.com/user-attachments/assets/f70bde7d-2d91-4f46-963b-2098505b0027)
-
-
-3. Power BI Visualizations  [Download Here](https://app.powerbi.com/groups/me/reports/1defa032-0b23-405a-9b42-7e89fdb081b6?ctid=b6de804f-51cd-47ef-a151-26514ed475f0&pbi_source=linkShare&bookmarkGuid=c26374cf-d21e-4a4f-8c66-1f0883790118).
-
-The **Customer Insights and Subscription Trends Dashboard** presents customer segmentation by subscription type and region:
-- **KPI Cards** display key metrics such as Average Subscription Duration (365.35 days) and Average Revenue per Subscription (1999.0).
-- **Subscription Type Breakdown** uses a Pie Chart for regional distributions, with each region representing about 25% of total subscriptions.
-- **Revenue by Region and Subscription Type** is visualized through a Bar Chart, highlighting revenue-generating regions by subscription type.
-- **Customer Segmentation by Region and Subscription Type** shows an even distribution of subscriptions across regions.
-
-The **Cancellation and Subscription Analysis Dashboard** emphasizes cancellation trends and the active/canceled split by subscription type:
-- **Canceled Count and Revenue by Quarter** reveals quarterly trends, showing a Q1-Q4 decline in cancellations and revenue.
-- **Customer Count by Subscription Type and Canceled Status** displays the higher cancellation count for Basic subscriptions, visualized in Horizontal Bar Charts.
-- **Total Subscriptions** with progress bars indicate total, canceled, and active subscriptions.
-
-
-**Visualizations**: 
-
-[Customer Insight Dashboard](https://github.com/user-attachments/assets/16dafb67-4b21-4be7-86a8-3b8d8832ba11)
-
-[Customer Insight 2](https://github.com/user-attachments/assets/5359006b-8bb3-4ee1-9adf-5426b07818d0)
-
-[Cancellation Rate](https://github.com/user-attachments/assets/68cd24fd-a643-45c8-8349-e13ff66220b6)
-
+3. **Power BI Visualizations**: [Download Here](https://app.powerbi.com/groups/me/reports/1defa032-0b23-405a-9b42-7e89fdb081b6?ctid=b6de804f-51cd-47ef-a151-26514ed475f0&pbi_source=linkShare&bookmarkGuid=c26374cf-d21e-4a4f-8c66-1f0883790118)
 
 ---
 
 ### Key Findings
 
 **What is Working**
-- *Active Subscription Distribution*:
+
+- **Active Subscription Distribution**:
   - *Basic Subscription*: High active count in the East (8,488) and North (3,366), indicating strong regional preference.
   - *Premium and Standard*: Active counts concentrated in the South (Premium, 3,382) and West (Standard, 3,376), hinting at regional inclinations for premium tiers.
 
-- *No Early Cancellations Within Six Months*: Upon analysis, it was discovered that no customers canceled their subscriptions within the first six months. This suggests that customers generally remain engaged during the initial period, indicating effective onboarding or initial satisfaction with the service. This insight points to a retention opportunity within this timeframe, where additional engagement or value reinforcement could encourage longer-term commitment beyond the six-month mark.
+- **No Early Cancellations Within Six Months**: This suggests that customers generally remain engaged during the initial period, indicating effective onboarding or initial satisfaction with the service.
 
-- *Revenue from Premium Subscribers*: Despite a lower count, Premium subscriptions show high revenue potential, especially in the South, meriting focused retention efforts.
+- **Revenue from Premium Subscribers**: Despite a lower count, Premium subscriptions show high revenue potential, especially in the South.
 
 **What Needs Improvement**
-- *High Cancellation Rate Across Tiers*:
-  - *Basic*: Highest cancellations in the North (5,067), implying that the Basic model may not meet expectations there.
-  - *Premium and Standard*: Premium (5,064) and Standard (5,044) see high cancellations in the South and West, respectively, suggesting that value perception may need improvement.
 
-- *Regional Cancellation Patterns*: Each subscription tier has cancellations concentrated in specific regions (North for Basic, South for Premium, West for Standard), pointing to regional influences on customer retention.
+- **High Cancellation Rate Across Tiers**:
+  - *Basic*: Highest cancellations in the North (5,067), implying that the Basic model may not meet expectations there.
+  - *Premium and Standard*: High cancellations in the South and West, respectively, suggesting that value perception may need improvement.
 
 ---
 
 ### Recommendations
+
 1. **Targeted Retention Strategies**:
-   - **Basic Subscription (North)**: Region-specific engagement initiatives to reduce cancellations, such as tailored onboarding and targeted content.
-   - **Premium and Standard (South and West)**: Loyalty programs and personalized incentives for these regions to improve retention.
+   - Basic Subscription (North): Region-specific engagement initiatives, such as tailored onboarding and targeted content.
+   - Premium and Standard (South and West): Loyalty programs and personalized incentives to improve retention.
 
-2. **Enhanced Value Proposition**: Align subscription benefits with customer expectations. Consider adding features for each tier to enhance perceived value and address cancellation drivers.
+2. **Enhanced Value Proposition**: Align subscription benefits with customer expectations. Consider adding features for each tier to enhance perceived value.
 
-3. **Regionally Tailored Campaigns**: Use marketing campaigns focused on each subscription type’s unique benefits to improve satisfaction and retention.
+3. **Regionally Tailored Campaigns**: Focus on campaigns that highlight the unique benefits of each subscription type to improve satisfaction and retention.
 
 ---
 
 ### Conclusion
-This project provides actionable insights into customer behavior within a subscription service, identifying key areas for revenue enhancement and retention. Leveraging data-driven recommendations for targeted marketing and customer engagement, this analysis supports sustainable growth and fosters a loyal subscriber base. The use of Excel, SQL, and Power BI enables a thorough analysis of the subscription landscape, empowering stakeholders to make strategic, data-backed decisions.
 
----
+This project provides actionable insights into customer behavior within a subscription service, identifying key areas for revenue enhancement and retention. The use of Excel, SQL, and Power BI enables a thorough analysis of the subscription landscape, empowering stakeholders to make strategic, data-backed decisions. Future directions could include tracking the impact of recommended strategies and refining segmentation based on customer feedback.
+
+--- 
