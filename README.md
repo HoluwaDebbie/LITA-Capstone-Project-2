@@ -100,7 +100,7 @@ These insights aid in understanding revenue, subscription type popularity, and c
 
 ### Data Analysis and Visualization
 
-1. **Excel Analysis**: I used Excel online, so you can download the file here: [Download Here](https://1drv.ms/x/c/41bec79bae4bb512/EaOvzB2De4dKh3UD2P5_T08BaV3IeyUJoaf8c_w6c3HF8w?e=Ne8teT).
+1. **Excel Analysis**:  The Excel workbook is available for [download here](https://1drv.ms/x/c/41bec79bae4bb512/EaOvzB2De4dKh3UD2P5_T08BaV3IeyUJoaf8c_w6c3HF8w?e=Ne8teT).
 
    - **Key Formulas Used**:
      - Average Subscription Duration: `=AVERAGE(SubscriptionDurationRange)`
@@ -151,7 +151,7 @@ These insights aid in understanding revenue, subscription type popularity, and c
 
      **Visualization**: ![SQL Top 3 Regions by Subscription Cancellations](https://github.com/user-attachments/assets/f70bde7d-2d91-4f46-963b-2098505b0027)
 
-3. **Power BI Visualizations**: [Download Here](https://app.powerbi.com/groups/me/reports/1defa032-0b23-405a-9b42-7e89fdb081b6?ctid=b6de804f-51cd-47ef-a151-26514ed475f0&pbi_source=linkShare&bookmarkGuid=c26374cf-d21e-4a4f-8c66-1f0883790118)
+3. **Power BI Visualizations**: For interactive analysis, access the Power BI dashboard here: [Interactive Dashboard](https://app.powerbi.com/groups/me/reports/1defa032-0b23-405a-9b42-7e89fdb081b6?ctid=b6de804f-51cd-47ef-a151-26514ed475f0&pbi_source=linkShare&bookmarkGuid=c26374cf-d21e-4a4f-8c66-1f0883790118).
 
 ---
 
