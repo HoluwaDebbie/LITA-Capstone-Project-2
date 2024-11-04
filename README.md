@@ -2,7 +2,7 @@
 
 ---
 
-### Project Title: Customer Segmentation for a Subscription Service.
+## Project Title: Customer Segmentation for a Subscription Service.
 
 ### Table of Content
 
@@ -12,7 +12,7 @@
 
 [Tools used](#tools-used).
 
-[Data Cleaning and Preparations](#data-cleaning-and-preparations).
+[Data Cleaning and Preparation](#data-cleaning-and-preparation).
 
 [Exploratory Data Analysis](#exploratory-data-analysis).
 
@@ -102,8 +102,7 @@ Key questions explored in this analysis:
 1. Which subscription types drive the most revenue?
 2. How does revenue distribution vary across regions?
 3. What are the characteristics of active vs. canceled subscriptions?
-4. Who are the top customers by revenue, and what are their purchasing behaviors?
-5. What are the average subscription duration and cancellation rates?
+4. What are the average subscription duration and cancellation rates?
 
 These insights aid in understanding revenue, subscription type popularity, and customer loyalty.
 
@@ -127,7 +126,8 @@ These insights aid in understanding revenue, subscription type popularity, and c
 
 Pivot tables were used to summarize revenue by region, count subscriptions, and average subscription durations.
 
-**Visualization**: 
+**Visualization**: [Pivot Table for Customer Data](https://github.com/user-attachments/assets/e5268713-7ac9-493f-9f84-4f51bbca6500)
+
 
 2.  SQL Analysis
 
@@ -141,7 +141,8 @@ SELECT 'Total', COUNT(CustomerID)
 FROM CustomerData;
 ```
 
-**Visualization**: 
+**Visualization**: [SQL  total number of customers from each region](https://github.com/user-attachments/assets/594d08e5-1101-47d6-9125-61e475a6e97f)
+
 
 - **Total Revenue by Subscription Type**:
 ```SQL
@@ -153,7 +154,8 @@ SELECT 'Total', SUM(CAST(REPLACE(Revenue, ',', '') AS INTEGER))
 FROM CustomerData;
 ```
 
-**Visualization**: 
+**Visualization**: [SQL total revenue by subscription type](https://github.com/user-attachments/assets/e707e7ef-b4ce-4bab-b4f3-39e0a042951a)
+
 
 - **Top 3 Regions by Subscription Cancellation**:
 ```SQL
@@ -165,9 +167,10 @@ ORDER BY Cancellations DESC
 LIMIT 3;
 ```
 
-**Visualization**: 
+**Visualization**: [SQL top 3 regions by subscription cancellations](https://github.com/user-attachments/assets/f70bde7d-2d91-4f46-963b-2098505b0027)
 
-### Power BI Visualizations  [Download Here](https://app.powerbi.com/groups/me/reports/1defa032-0b23-405a-9b42-7e89fdb081b6?ctid=b6de804f-51cd-47ef-a151-26514ed475f0&pbi_source=linkShare&bookmarkGuid=c26374cf-d21e-4a4f-8c66-1f0883790118).
+
+3. Power BI Visualizations  [Download Here](https://app.powerbi.com/groups/me/reports/1defa032-0b23-405a-9b42-7e89fdb081b6?ctid=b6de804f-51cd-47ef-a151-26514ed475f0&pbi_source=linkShare&bookmarkGuid=c26374cf-d21e-4a4f-8c66-1f0883790118).
 
 The **Customer Insights and Subscription Trends Dashboard** presents customer segmentation by subscription type and region:
 - **KPI Cards** display key metrics such as Average Subscription Duration (365.35 days) and Average Revenue per Subscription (1999.0).
@@ -179,6 +182,16 @@ The **Cancellation and Subscription Analysis Dashboard** emphasizes cancellation
 - **Canceled Count and Revenue by Quarter** reveals quarterly trends, showing a Q1-Q4 decline in cancellations and revenue.
 - **Customer Count by Subscription Type and Canceled Status** displays the higher cancellation count for Basic subscriptions, visualized in Horizontal Bar Charts.
 - **Total Subscriptions** with progress bars indicate total, canceled, and active subscriptions.
+
+
+**Visualizations**: 
+
+[Customer Insight Dashboard](https://github.com/user-attachments/assets/16dafb67-4b21-4be7-86a8-3b8d8832ba11)
+
+[Customer Insight 2](https://github.com/user-attachments/assets/5359006b-8bb3-4ee1-9adf-5426b07818d0)
+
+[Cancellation Rate](https://github.com/user-attachments/assets/68cd24fd-a643-45c8-8349-e13ff66220b6)
+
 
 ---
 
@@ -193,12 +206,14 @@ The **Cancellation and Subscription Analysis Dashboard** emphasizes cancellation
 
 - *Revenue from Premium Subscribers*: Despite a lower count, Premium subscriptions show high revenue potential, especially in the South, meriting focused retention efforts.
 
-### What Needs Improvement
+**What Needs Improvement**
 - *High Cancellation Rate Across Tiers*:
   - *Basic*: Highest cancellations in the North (5,067), implying that the Basic model may not meet expectations there.
   - *Premium and Standard*: Premium (5,064) and Standard (5,044) see high cancellations in the South and West, respectively, suggesting that value perception may need improvement.
 
 - *Regional Cancellation Patterns*: Each subscription tier has cancellations concentrated in specific regions (North for Basic, South for Premium, West for Standard), pointing to regional influences on customer retention.
+
+---
 
 ### Recommendations
 1. **Targeted Retention Strategies**:
