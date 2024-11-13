@@ -111,7 +111,7 @@ These insights aid in understanding revenue, subscription type popularity, and c
 
    Pivot tables were used to summarize revenue by region, count subscriptions, and average subscription durations.
 
-   **Visualization**: [Pivot Table for Customer Data](https://github.com/user-attachments/assets/e5268713-7ac9-493f-9f84-4f51bbca6500)
+   **Visualization**: ![Pivot Table for Customer Data](https://github.com/user-attachments/assets/e5268713-7ac9-493f-9f84-4f51bbca6500)
 
 2. **SQL Analysis**
 
@@ -125,7 +125,7 @@ These insights aid in understanding revenue, subscription type popularity, and c
      FROM CustomerData;
      ```
 
-     **Visualization**: [SQL Total Number of Customers from Each Region](https://github.com/user-attachments/assets/594d08e5-1101-47d6-9125-61e475a6e97f)
+     **Visualization**: ![SQL Total Number of Customers from Each Region](https://github.com/user-attachments/assets/594d08e5-1101-47d6-9125-61e475a6e97f)
 
    - **Total Revenue by Subscription Type**:
      ```SQL
@@ -137,7 +137,7 @@ These insights aid in understanding revenue, subscription type popularity, and c
      FROM CustomerData;
      ```
 
-     **Visualization**: [SQL Total Revenue by Subscription Type](https://github.com/user-attachments/assets/e707e7ef-b4ce-4bab-b4f3-39e0a042951a)
+     **Visualization**: ![SQL Total Revenue by Subscription Type](https://github.com/user-attachments/assets/e707e7ef-b4ce-4bab-b4f3-39e0a042951a)
 
    - **Top 3 Regions by Subscription Cancellation**:
      ```SQL
@@ -149,7 +149,7 @@ These insights aid in understanding revenue, subscription type popularity, and c
      LIMIT 3;
      ```
 
-     **Visualization**: [SQL Top 3 Regions by Subscription Cancellations](https://github.com/user-attachments/assets/f70bde7d-2d91-4f46-963b-2098505b0027)
+     **Visualization**: ![SQL Top 3 Regions by Subscription Cancellations](https://github.com/user-attachments/assets/f70bde7d-2d91-4f46-963b-2098505b0027)
 
 3. **Power BI Visualizations**: For interactive analysis, access the Power BI dashboard here: [Interactive Dashboard](https://app.powerbi.com/groups/me/reports/1defa032-0b23-405a-9b42-7e89fdb081b6?ctid=b6de804f-51cd-47ef-a151-26514ed475f0&pbi_source=linkShare&bookmarkGuid=c26374cf-d21e-4a4f-8c66-1f0883790118).
 
@@ -167,11 +167,11 @@ The **Cancellation and Subscription Analysis Dashboard** emphasizes cancellation
 
 **Visualizations**: 
 
-[Customer Insight Dashboard](https://github.com/user-attachments/assets/16dafb67-4b21-4be7-86a8-3b8d8832ba11)
+![Customer Insight Dashboard](https://github.com/user-attachments/assets/16dafb67-4b21-4be7-86a8-3b8d8832ba11)
 
-[Customer Insight 2](https://github.com/user-attachments/assets/5359006b-8bb3-4ee1-9adf-5426b07818d0)
+![Customer Insight 2](https://github.com/user-attachments/assets/5359006b-8bb3-4ee1-9adf-5426b07818d0)
 
-[Cancellation Rate](https://github.com/user-attachments/assets/68cd24fd-a643-45c8-8349-e13ff66220b6)
+![Cancellation Rate](https://github.com/user-attachments/assets/68cd24fd-a643-45c8-8349-e13ff66220b6)
 
 ---
 
